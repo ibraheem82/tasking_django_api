@@ -1,3 +1,5 @@
 
 tasking_api/tasking_api/db.sqlite3
+tasking_api/users/migrations
+tasking_api/tasking_api/__pycache__
 ibraheem
