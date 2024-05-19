@@ -31,7 +31,7 @@ def set_username(sender, instance, **kwargs):
    
     if not instance.username:
       username = f'{instance.first_name}_{instance.last_name}'.lower()
-      counter = 1
+      counter = 1 
       while User.objects.filter(username=username):
         #  It uses a counter to ensure the generated username is unique by appending a number to the end (e.g., john_doe, john_doe_1, john_doe_2, etc.).
         username = f'{instance.first_name}_{instance.last_name}_{counter}'.lower()
