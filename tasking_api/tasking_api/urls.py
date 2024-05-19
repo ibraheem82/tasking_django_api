@@ -25,7 +25,7 @@ from users import router as users_api_router
 
 
 api_url_patterns = [
-    path('auth/', include(auth_api_urls)),
+    # path('auth/', include(auth_api_urls)),
     path('accounts/', include(users_api_router.router.urls))
 ]
 
