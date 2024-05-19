@@ -26,13 +26,14 @@ set_username: This is the function that will be called when the signal is receiv
 @receiver(pre_save, sender=User)
 def set_username(sender, instance, **kwargs):
   
-  #  ! If the username attribute of the User instance is empty (not instance.username), the function generates a username based on the first_name and last_name attributes.
-    # ! It uses a counter to ensure the generated username is unique by appending a number to the end (e.g., john_doe, john_doe_1, john_doe_2, etc.).
+  #   If the username attribute of the User instance is empty (not instance.username), the function generates a username based on the first_name and last_name attributes.
+    # 
    
     if not instance.username:
       username = f'{instance.first_name}_{instance.last_name}'.lower()
       counter = 1
       while User.objects.filter(username=username):
+        #  It uses a counter to ensure the generated username is unique by appending a number to the end (e.g., john_doe, john_doe_1, john_doe_2, etc.).
         username = f'{instance.first_name}_{instance.last_name}_{counter}'.lower()
         counter += 1
          #  ! Finally, it sets the username attribute of the User instance to the generated username.
