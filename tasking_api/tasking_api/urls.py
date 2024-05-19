@@ -19,9 +19,9 @@ from django.urls import path, include
 from users import router as users_api_router
 
 
-auth_api_urls  = []
-if settings.DEBUG:
-    auth_api_urls.append(path(r'verify/', include('rest_framework.urls')))
+# auth_api_urls  = []
+# if settings.DEBUG:
+#     auth_api_urls.append(path(r'verify/', include('rest_framework.urls')))
 
 
 api_url_patterns = [
