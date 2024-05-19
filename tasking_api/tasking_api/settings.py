@@ -28,8 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*', 'https://8000-ibraheem82-taskingdjang-f3f65t4cago.ws-eu114.gitpod.io/']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-ibraheem82-taskingdjang-f3f65t4cago.ws-eu114.gitpod.io',
-    # add any other trusted origins
+    'https://8000-ibraheem82-taskingdjang-f3f65t4cago.ws-eu114.gitpod.io'
 ]
 
 # Application definition
