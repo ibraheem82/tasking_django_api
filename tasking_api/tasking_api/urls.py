@@ -19,13 +19,15 @@ from django.urls import path, include
 from users import router as users_api_router
 
 
-# auth_api_urls  = []
-# if settings.DEBUG:
-#     auth_api_urls.append(path(r'verify/', include('rest_framework.urls')))
+auth_api_urls  = []
+if settings.DEBUG:
+    #  This block is checking if the application is running in debug mode. If it is, it adds a URL pattern to the auth_api_urls list. This pattern includes all the URLs defined in rest_framework.urls, which provides views for login, logout, and password change. The r'verify/' part means that these views will be accessible at URLs that start with verify/.
+    auth_api_urls.append(path(r'verify/', include('rest_framework.urls')))
 
 
 api_url_patterns = [
-    # path('auth/', include(auth_api_urls)),
+    #  This line is adding a URL pattern that includes all the URLs in auth_api_urls. The auth/ part means that these URLs will be accessible at URLs that start with auth/.
+    path('auth/', include(auth_api_urls)),
     path('accounts/', include(users_api_router.router.urls))
 ]
 

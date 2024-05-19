@@ -110,9 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [ 
-        '''
-         # ! This is a built-in permission class in DRF. It allows authenticated users to perform any request. Users that are not authenticated are only allowed to perform “safe” requests, i.e., they can only GET, HEAD or OPTIONS a resource. They cannot POST, PUT, PATCH, DELETE a resource.
-        '''
+       
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     
