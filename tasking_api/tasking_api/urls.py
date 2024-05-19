@@ -19,7 +19,9 @@ from django.urls import path, include
 from users import router as users_api_router
 
 
-auth_api_urls  = []
+auth_api_urls  = [
+    path(r'', include('rest_framework_social_oauth2.urls')),
+]
 if settings.DEBUG:
     #  This block is checking if the application is running in debug mode. If it is, it adds a URL pattern to the auth_api_urls list. This pattern includes all the URLs defined in rest_framework.urls, which provides views for login, logout, and password change. The r'verify/' part means that these views will be accessible at URLs that start with verify/.
     auth_api_urls.append(path(r'verify/', include('rest_framework.urls')))
