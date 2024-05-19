@@ -4,7 +4,7 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     
     password  = serializers.CharField(write_only = True, required = True)
-    
+    username = serializers.CharField(read_only = True)
 
     def create(self, validated_data):
         password = validated_data.pop('password')

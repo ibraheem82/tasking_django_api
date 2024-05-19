@@ -11,3 +11,30 @@ from .models import Profile
 def create_user_profile(sender, instance, created, **kwargs):
   if created:
     Profile.objects.create(user=instance)
+    
+    
+    # * automatically sets a username for a User instance before it's saved to the database. 
+    '''
+    @receiver: This is a decorator that registers the function to receive signals. In this case, it's listening for the pre_save signal, which is sent before an object is saved to the database.
+sender=User: This specifies that the signal is only sent when a User object is being saved.
+set_username: This is the function that will be called when the signal is received.
+
+  **Arguments:**
+  sender: The class of the object being saved (in this case, User).
+  instance: The actual object being saved (an instance of User).
+    '''
+@receiver(pre_save, sender=User)
+def set_username(sender, instance, **kwargs):
+  
+  #  ! If the username attribute of the User instance is empty (not instance.username), the function generates a username based on the first_name and last_name attributes.
+    # ! It uses a counter to ensure the generated username is unique by appending a number to the end (e.g., john_doe, john_doe_1, john_doe_2, etc.).
+   
+    if not instance.username:
+      username = f'{instance.first_name}_{instance.last_name}'.lower()
+      counter = 1
+      while User.objects.filter(username=username):
+        username = f'{instance.first_name}_{instance.last_name}_{counter}'.lower()
+        counter += 1
+         #  ! Finally, it sets the username attribute of the User instance to the generated username.
+      instance.username = username
+      
